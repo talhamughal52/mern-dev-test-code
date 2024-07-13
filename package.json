@@ -1,0 +1,38 @@
+{
+  "name": "mern-dev-test",
+  "version": "1.0.0",
+  "description": "MERN Stack Development Test",
+  "scripts": {
+    "start": "node server/index --prefix server",
+    "server": "nodemon server/index --prefix server",
+    "client": "npm run dev --prefix client",
+    "build": "cd client && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "cd client && npm install && cd .. && cd server && npm install && cd ..",
+    "data:import": "node server/seeder",
+    "data:destroy": "node server/seeder -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talhamughal52/mern-dev-test-code.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "reactjs",
+    "expressjs",
+    "mern-stack"
+  ],
+  "author": "Talha Younas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/talhamughal52/mern-dev-test-code/issues"
+  },
+  "homepage": "https://github.com/talhamughal52/mern-dev-test-code#readme",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
