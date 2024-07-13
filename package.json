@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "MERN Stack Development Test",
   "scripts": {
-    "start": "node server/index --prefix server",
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "start-server": "node server",
+    "start-client": "npm run start --prefix client",
     "server": "nodemon server/index --prefix server",
     "client": "npm run dev --prefix client",
     "build": "cd client && npm run build",
