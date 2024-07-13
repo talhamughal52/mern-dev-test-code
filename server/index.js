@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const morgan = require("morgan");
-const path = require("path");
 
 const connectDb = require("./config/db");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
@@ -15,7 +14,6 @@ connectDb();
 
 const app = express();
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
