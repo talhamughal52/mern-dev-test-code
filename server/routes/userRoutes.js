@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const emailValidator = require("email-validator");
 const asyncHandler = require("express-async-handler");
 const { v4: uuidv4 } = require("uuid");
+const path = require("path");
 
 const { protect } = require("../middlewares/authMiddleware");
 
@@ -15,7 +16,7 @@ const User = require("../schemas/userSchema");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, path.join(__dirname, "../uploads"));
   },
   filename: (req, file, cb) => {
     cb(null, `${uuidv4()}.${file.originalname}`);
@@ -66,7 +67,7 @@ const authUser = asyncHandler(async (req, res) => {
 const addCar = asyncHandler(async (req, res) => {
   const { model, price, phone, city, maxPictures } = req.body;
   const images = req.files.map((file) => file.path);
-  
+
   if (!model || !price || !phone || !city || !maxPictures || !images) {
     res.status(400);
     throw new Error("All Fields Are Required!");
