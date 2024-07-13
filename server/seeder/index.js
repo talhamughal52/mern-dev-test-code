@@ -15,7 +15,6 @@ const importData = async () => {
     await User.create({
       name: "Amjad",
       email: "Amjad@desolint.com",
-      email: "Amjad@desolint.com",
       password: bcrypt.hashSync("123456abc", 10),
     });
     console.log("Data created in database");
