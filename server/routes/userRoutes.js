@@ -16,7 +16,8 @@ const User = require("../schemas/userSchema");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../uploads"));
+    console.log(path.join(__dirname, "../uploads/"));
+    cb(null, path.join(__dirname, "../uploads/"));
   },
   filename: (req, file, cb) => {
     cb(null, `${uuidv4()}.${file.originalname}`);
